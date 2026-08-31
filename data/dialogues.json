@@ -1,0 +1,62 @@
+[
+  {
+    "id": "d001",
+    "scenario": "Khách hàng hỏi cấu trúc bao bì",
+    "category": "customer-specifications",
+    "roles": ["Khách hàng (Foreign customer)", "Nhân viên kinh doanh (Sales)"],
+    "lines": [
+      { "role": "Khách hàng", "zh": "你好，这个产品的包装结构是什么？", "vi": "Chào bạn, cấu trúc bao bì của sản phẩm này là gì?" },
+      { "role": "Sales", "zh": "您好，这款是PET/AL/PE三层复合结构，防潮防氧性能很好。", "vi": "Chào anh/chị, sản phẩm này là cấu trúc ghép 3 lớp PET/AL/PE, khả năng chống ẩm và chống oxy rất tốt." },
+      { "role": "Khách hàng", "zh": "可以做高温蒸煮吗？", "vi": "Có thể làm được túi hấp tiệt trùng ở nhiệt độ cao không?" },
+      { "role": "Sales", "zh": "可以，我们有专门的蒸煮膜，能耐121度高温杀菌。", "vi": "Được ạ, chúng tôi có màng chuyên dụng cho hấp tiệt trùng, chịu được nhiệt độ tiệt trùng 121 độ." }
+    ]
+  },
+  {
+    "id": "d002",
+    "scenario": "Đàm phán giá và số lượng đặt hàng tối thiểu",
+    "category": "negotiation",
+    "roles": ["Khách hàng", "Nhân viên kinh doanh"],
+    "lines": [
+      { "role": "Khách hàng", "zh": "这个价格是按照什么数量计算的？", "vi": "Giá này được tính theo số lượng bao nhiêu?" },
+      { "role": "Sales", "zh": "这个报价是按照一吨的数量计算的，如果订单量增加，价格可以再优惠。", "vi": "Báo giá này tính theo số lượng 1 tấn, nếu số lượng đơn hàng tăng thì giá có thể ưu đãi hơn." },
+      { "role": "Khách hàng", "zh": "最小起订量是多少？", "vi": "Số lượng đặt hàng tối thiểu (MOQ) là bao nhiêu?" },
+      { "role": "Sales", "zh": "我们的起订量一般是500公斤，首单可以适当降低。", "vi": "MOQ của chúng tôi thường là 500kg, đơn hàng đầu tiên có thể giảm bớt một chút." }
+    ]
+  },
+  {
+    "id": "d003",
+    "scenario": "Hỏi về chứng nhận chất lượng",
+    "category": "brcgs",
+    "roles": ["Khách hàng", "Quản lý chất lượng (QA/QC Manager)"],
+    "lines": [
+      { "role": "Khách hàng", "zh": "有没有BRCGS认证？", "vi": "Có chứng nhận BRCGS không?" },
+      { "role": "QC Manager", "zh": "有的，我们工厂通过了BRCGS AA级认证，也符合食品接触材料的相关法规。", "vi": "Có ạ, nhà máy chúng tôi đã đạt chứng nhận BRCGS hạng AA, cũng phù hợp với các quy định về vật liệu tiếp xúc thực phẩm." },
+      { "role": "Khách hàng", "zh": "可以提供检测报告吗？", "vi": "Có thể cung cấp báo cáo kiểm nghiệm không?" },
+      { "role": "QC Manager", "zh": "当然可以，每批产品出货前我们都会提供第三方检测报告。", "vi": "Đương nhiên được, mỗi lô hàng trước khi xuất chúng tôi đều cung cấp báo cáo kiểm nghiệm của bên thứ ba." }
+    ]
+  },
+  {
+    "id": "d004",
+    "scenario": "Trao đổi về lỗi sản phẩm sau sản xuất",
+    "category": "packaging-defects",
+    "roles": ["Quản lý sản xuất (Production Manager)", "Nhà cung cấp (Supplier)"],
+    "lines": [
+      { "role": "Production Manager", "zh": "这批复合膜出现了分层的问题，需要重新检查一下工艺。", "vi": "Lô màng ghép này xuất hiện vấn đề bong lớp, cần kiểm tra lại quy trình." },
+      { "role": "Supplier", "zh": "好的，我们马上安排技术员检查复合机的温度和压力参数。", "vi": "Vâng, chúng tôi sẽ sắp xếp kỹ thuật viên kiểm tra ngay thông số nhiệt độ và áp suất của máy ghép." },
+      { "role": "Production Manager", "zh": "另外印刷部分也有轻微的套印不准。", "vi": "Ngoài ra phần in cũng bị lệch màu (sai vị trí in) nhẹ." },
+      { "role": "Supplier", "zh": "了解，我们会调整印刷机的对位系统，尽快解决。", "vi": "Đã hiểu, chúng tôi sẽ điều chỉnh hệ thống canh chỉnh của máy in, giải quyết sớm nhất có thể." }
+    ]
+  },
+  {
+    "id": "d005",
+    "scenario": "Trao đổi về phí bản in và điều khoản đặt hàng",
+    "category": "quotations",
+    "roles": ["Khách hàng", "Nhân viên kinh doanh"],
+    "lines": [
+      { "role": "Khách hàng", "zh": "印刷版费可以退吗？", "vi": "Phí làm bản in có được hoàn lại không?" },
+      { "role": "Sales", "zh": "如果后续订单量达到一定数量，版费是可以退还或者抵扣的。", "vi": "Nếu các đơn hàng sau đạt đủ số lượng nhất định thì phí bản in có thể được hoàn lại hoặc khấu trừ." },
+      { "role": "Khách hàng", "zh": "交货期大概需要多久？", "vi": "Thời gian giao hàng khoảng bao lâu?" },
+      { "role": "Sales", "zh": "正常订单交货期是15到20天，具体要看当时的生产排期。", "vi": "Đơn hàng bình thường thời gian giao hàng là 15-20 ngày, cụ thể còn tùy vào lịch sản xuất lúc đó." }
+    ]
+  }
+]

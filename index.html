@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Chinese Packaging Vocabulary</title>
+<meta name="theme-color" content="#d9442d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bao Bi TQ">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <h1 id="topbar-title">📦 Từ vựng Bao bì TQ</h1>
+  </div>
+
+  <!-- ===================== HOME ===================== -->
+  <div class="screen active" id="screen-home">
+    <div class="stat-row">
+      <div class="stat-tile"><div class="num" id="home-due">0</div><div class="label">Cần ôn</div></div>
+      <div class="stat-tile"><div class="num" id="home-new">0</div><div class="label">Từ mới</div></div>
+      <div class="stat-tile"><div class="num" id="home-total">0</div><div class="label">Tổng từ</div></div>
+    </div>
+    <div class="section-title">Tiến độ tổng thể</div>
+    <div class="card">
+      <div class="progress-bar-outer"><div class="progress-bar-inner" id="home-progress-bar" style="width:0%"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--text-dim);">
+        <span id="home-progress-label">0%</span>
+        <span>🔥 Streak: <b id="home-streak" style="color:var(--text);">0</b></span>
+        <span>Đã thuộc: <b id="home-mastered" style="color:var(--text);">0</b></span>
+      </div>
+    </div>
+    <button class="big-cta" id="home-start-today">▶️ Bắt đầu học hôm nay</button>
+    <div class="section-title">Truy cập nhanh</div>
+    <div class="quick-actions">
+      <button class="quick-action" id="home-quick-review"><span class="qa-icon">📚</span>Ôn tập</button>
+      <button class="quick-action" id="home-quick-new"><span class="qa-icon">➕</span>Từ mới</button>
+      <button class="quick-action" id="home-quick-quiz"><span class="qa-icon">🧠</span>Quiz</button>
+      <button class="quick-action" id="home-quick-search"><span class="qa-icon">🔍</span>Tìm kiếm</button>
+      <button class="quick-action" id="home-quick-favorites"><span class="qa-icon">⭐</span>Yêu thích</button>
+      <button class="quick-action" id="home-quick-progress"><span class="qa-icon">📊</span>Tiến độ</button>
+    </div>
+  </div>
+
+  <!-- ===================== STUDY / FLASHCARD ===================== -->
+  <div class="screen" id="screen-study">
+    <div class="study-progress">
+      <button class="icon-btn" id="study-back">‹</button>
+      <span id="study-progress-label">0 / 0</span>
+      <div class="bar progress-bar-outer"><div class="progress-bar-inner" id="study-progress-bar" style="width:0%"></div></div>
+    </div>
+    <div class="flashcard-wrap" id="study-card-wrap"></div>
+    <div class="grade-row hidden" id="grade-row">
+      <button class="grade-btn grade-again" id="grade-again"><span class="emoji">❌</span>Again</button>
+      <button class="grade-btn grade-hard" id="grade-hard"><span class="emoji">😐</span>Hard</button>
+      <button class="grade-btn grade-good" id="grade-good"><span class="emoji">✅</span>Good</button>
+      <button class="grade-btn grade-easy" id="grade-easy"><span class="emoji">🚀</span>Easy</button>
+    </div>
+  </div>
+
+  <!-- ===================== SEARCH ===================== -->
+  <div class="screen" id="screen-search">
+    <div class="search-input-wrap">
+      <input class="search-input" id="search-input" type="search" placeholder="🔍 Tìm Hán tự, pinyin, nghĩa...">
+    </div>
+    <div id="search-results"></div>
+  </div>
+
+  <!-- ===================== CATEGORIES ===================== -->
+  <div class="screen" id="screen-categories">
+    <div class="section-title">Danh mục từ vựng</div>
+    <div id="categories-list"></div>
+  </div>
+
+  <!-- ===================== CATEGORY DETAIL ===================== -->
+  <div class="screen" id="screen-category-detail">
+    <div class="study-progress">
+      <button class="icon-btn" id="category-detail-back">‹</button>
+      <span id="category-detail-title" style="font-weight:700;flex:1;"></span>
+      <span id="category-detail-count" style="font-size:13px;color:var(--text-dim);"></span>
+    </div>
+    <button class="big-cta" id="category-detail-study" style="margin:10px 0;">📚 Học danh mục này</button>
+    <div id="category-detail-list"></div>
+  </div>
+
+  <!-- ===================== FAVORITES ===================== -->
+  <div class="screen" id="screen-favorites">
+    <div class="section-title">⭐ Từ yêu thích</div>
+    <div id="favorites-list"></div>
+  </div>
+
+  <!-- ===================== DIFFICULT ===================== -->
+  <div class="screen" id="screen-difficult">
+    <div class="section-title">🧠 Từ hay quên</div>
+    <div id="difficult-list"></div>
+  </div>
+
+  <!-- ===================== REAL PACKAGING CHINESE ===================== -->
+  <div class="screen" id="screen-dialogues">
+    <div class="section-title">💬 Tiếng Trung thực tế trong ngành</div>
+    <div id="dialogues-list"></div>
+  </div>
+
+  <!-- ===================== PROGRESS DASHBOARD ===================== -->
+  <div class="screen" id="screen-progress">
+    <div class="section-title">Thống kê tổng quan</div>
+    <div class="stat-row" style="flex-wrap:wrap;" id="progress-stats"></div>
+    <div class="section-title">Hoạt động 7 ngày qua</div>
+    <div class="chart-wrap" id="progress-chart"></div>
+    <div class="section-title">Tiến độ theo danh mục</div>
+    <div class="card" id="progress-categories"></div>
+  </div>
+
+  <!-- ===================== QUIZ MENU ===================== -->
+  <div class="screen" id="screen-quiz-menu">
+    <div class="study-progress">
+      <button class="icon-btn" id="quiz-menu-back">‹</button>
+      <span style="font-weight:700;">Chọn chế độ Quiz</span><span></span>
+    </div>
+    <div class="quiz-mode-grid" id="quiz-mode-grid"></div>
+  </div>
+
+  <!-- ===================== QUIZ PLAY ===================== -->
+  <div class="screen" id="screen-quiz-play">
+    <div class="study-progress">
+      <button class="icon-btn" id="quiz-play-back">‹</button>
+      <span class="quiz-score" id="quiz-score" style="flex:1;text-align:center;">Điểm: 0 / 0</span>
+      <span></span>
+    </div>
+    <div class="quiz-question-wrap" id="quiz-question"></div>
+  </div>
+
+  <!-- ===================== MORE ===================== -->
+  <div class="screen" id="screen-more">
+    <div class="section-title">Thêm</div>
+    <div id="more-list"></div>
+  </div>
+
+  <!-- ===================== SETTINGS / IMPORT / EXPORT / AI ===================== -->
+  <div class="screen" id="screen-settings">
+    <div class="section-title">Học tập</div>
+    <div class="card">
+      <div class="form-field">
+        <label>Số từ mới tối đa mỗi ngày</label>
+        <input type="number" id="setting-daily-limit" min="5" max="100" step="5">
+      </div>
+    </div>
+
+    <div class="section-title">Nhập từ vựng mới (CSV / JSON)</div>
+    <div class="card">
+      <p style="font-size:13px;color:var(--text-dim);">Cột hỗ trợ: chinese, pinyin, vietnamese, english, category, example, exampleTranslation. Từ trùng (theo Hán tự) sẽ tự động bị bỏ qua.</p>
+      <input type="file" id="import-file" accept=".csv,.json,application/json,text/csv">
+      <div id="import-preview"></div>
+    </div>
+
+    <div class="section-title">Sao lưu &amp; Khôi phục</div>
+    <div class="card">
+      <button class="big-cta secondary" id="btn-export-backup">⬇️ Xuất file sao lưu đầy đủ (JSON)</button>
+      <button class="big-cta secondary" id="btn-export-csv" style="margin-top:8px;">⬇️ Xuất từ vựng (CSV)</button>
+      <div class="settings-row" style="margin-top:8px;border-bottom:none;">
+        <label>⬆️ Khôi phục từ file sao lưu</label>
+        <input type="file" id="restore-file" accept=".json,application/json">
+      </div>
+    </div>
+
+    <div class="section-title">Trợ lý AI tạo từ vựng (tuỳ chọn)</div>
+    <div class="card">
+      <p style="font-size:13px;color:var(--text-dim);">Cần Anthropic API key của riêng bạn. Key chỉ lưu trên máy này (localStorage) và gọi thẳng đến Anthropic — không qua máy chủ nào khác. Không dùng chung key này cho việc khác.</p>
+      <div class="form-field">
+        <label>Anthropic API key</label>
+        <input type="password" id="setting-api-key" placeholder="sk-ant-...">
+      </div>
+      <div class="form-field">
+        <label>Model</label>
+        <select id="setting-ai-model">
+          <option value="claude-haiku-4-5">Claude Haiku 4.5 (nhanh, rẻ)</option>
+          <option value="claude-sonnet-5">Claude Sonnet 5 (chất lượng cao hơn)</option>
+        </select>
+      </div>
+      <button class="big-cta secondary" id="btn-run-gap-analysis">🔎 Phân tích khoảng trống từ vựng</button>
+      <div id="gap-analysis-result" style="margin-top:8px;"></div>
+      <button class="big-cta" id="btn-generate-ai" style="margin-top:10px;">🤖 Tạo 30 từ mới bằng AI</button>
+    </div>
+  </div>
+
+  <!-- ===================== TAB BAR ===================== -->
+  <div class="tabbar">
+    <button class="tab-btn active" data-tab="home"><span class="ticon">🏠</span>Trang chủ</button>
+    <button class="tab-btn" data-tab="study" id="tab-study"><span class="ticon">📚</span>Học</button>
+    <button class="tab-btn" data-tab="quiz-menu"><span class="ticon">🧠</span>Quiz</button>
+    <button class="tab-btn" data-tab="search"><span class="ticon">🔍</span>Tìm</button>
+    <button class="tab-btn" data-tab="more"><span class="ticon">⋯</span>Thêm</button>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/srs.js"></script>
+<script src="js/tts.js"></script>
+<script src="js/importer.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
