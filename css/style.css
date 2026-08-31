@@ -147,3 +147,5 @@ button { font-family: inherit; -webkit-tap-highlight-color: transparent; }
 .status-new { color: var(--green); }
 .status-dup { color: var(--text-dim); }
 ::-webkit-scrollbar { display: none; }
+.example-speak-btn { background: none; border: none; font-size: 15px; padding: 0 0 0 4px; vertical-align: middle; opacity: 0.8; }
+.example-speak-btn:active { opacity: 1; }

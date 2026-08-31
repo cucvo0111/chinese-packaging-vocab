@@ -151,7 +151,8 @@
       html += '<div class="pinyin">' + escapeHtml(w.pinyin) + '</div>' +
         '<div class="meaning">' + escapeHtml(w.vietnamese) + '</div>';
       if (w.example) {
-        html += '<div class="example-block"><div class="example-zh">' + escapeHtml(w.example) + '</div>' +
+        html += '<div class="example-block"><div class="example-zh">' + escapeHtml(w.example) +
+          ' <button class="example-speak-btn" id="fc-speak-example">🔊</button></div>' +
           '<div>' + escapeHtml(w.exampleTranslation) + '</div></div>';
       }
     } else {
@@ -161,12 +162,14 @@
     wrap.innerHTML = html;
 
     $('#flashcard').addEventListener('click', function (e) {
-      if (e.target.closest('#fc-fav') || e.target.closest('#fc-speak')) return;
+      if (e.target.closest('#fc-fav') || e.target.closest('#fc-speak') || e.target.closest('#fc-speak-example')) return;
       studyFlipped = !studyFlipped;
       renderStudyCard();
     });
     $('#fc-speak').onclick = function (e) { e.stopPropagation(); TTS.speak(w.chinese); };
     $('#fc-fav').onclick = function (e) { e.stopPropagation(); DB.toggleFavorite(w.id); studyQueue[studyIndex] = DB.byId(w.id); renderStudyCard(); };
+    const exSpeak = $('#fc-speak-example');
+    if (exSpeak) exSpeak.onclick = function (e) { e.stopPropagation(); TTS.speak(w.example); };
 
     $('#grade-row').classList.toggle('hidden', !studyFlipped);
   }
@@ -244,7 +247,8 @@
       '<div class="pinyin">' + escapeHtml(w.pinyin) + '</div>' +
       '<div class="meaning">' + escapeHtml(w.vietnamese) + '</div>' +
       (w.english ? '<div style="color:var(--text-dim);font-size:13px;margin-top:2px;">EN: ' + escapeHtml(w.english) + '</div>' : '') +
-      (w.example ? '<div class="example-block"><div class="example-zh">' + escapeHtml(w.example) + '</div><div>' + escapeHtml(w.exampleTranslation) + '</div></div>' : '') +
+      (w.example ? '<div class="example-block"><div class="example-zh">' + escapeHtml(w.example) +
+        ' <button class="example-speak-btn" id="wd-speak-example">🔊</button></div><div>' + escapeHtml(w.exampleTranslation) + '</div></div>' : '') +
       '<div style="margin-top:12px;display:flex;gap:8px;">' +
       '<button id="wd-fav" class="pill-btn' + (w.favorite ? ' active' : '') + '">⭐ Yêu thích</button>' +
       '<button id="wd-study" class="pill-btn">📚 Ôn từ này</button></div>';
@@ -256,6 +260,8 @@
     backdrop.onclick = close;
     $('#wd-close', modal).onclick = close;
     $('#wd-speak', modal).onclick = function () { TTS.speak(w.chinese); };
+    const wdExSpeak = $('#wd-speak-example', modal);
+    if (wdExSpeak) wdExSpeak.onclick = function () { TTS.speak(w.example); };
     $('#wd-fav', modal).onclick = function () { DB.toggleFavorite(w.id); close(); openWordDetail(id); };
     $('#wd-study', modal).onclick = function () {
       close();
