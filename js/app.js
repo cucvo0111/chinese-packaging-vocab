@@ -149,7 +149,8 @@
       '<button class="speak-btn" id="fc-speak">🔊</button>';
     if (studyFlipped) {
       html += '<div class="pinyin">' + escapeHtml(w.pinyin) + '</div>' +
-        '<div class="meaning">' + escapeHtml(w.vietnamese) + '</div>';
+        '<div class="meaning">' + escapeHtml(w.vietnamese) + '</div>' +
+        (w.english ? '<div style="color:var(--text-dim);font-size:13px;margin-top:2px;">EN: ' + escapeHtml(w.english) + '</div>' : '');
       if (w.example) {
         html += '<div class="example-block"><div class="example-zh">' + escapeHtml(w.example) +
           ' <button class="example-speak-btn" id="fc-speak-example">🔊</button></div>' +
